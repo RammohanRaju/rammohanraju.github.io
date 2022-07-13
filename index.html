@@ -3,7 +3,9 @@
     <link rel='stylesheet' type='text/css' href='https://cdn-dev.securiti.xyz/consent/cookie-consent.css' />
     <!-- After adding this script, call setConsentBannerParams({uuid: <unique id> }) to set unique ID for a customer. -->
     <script>
-    document.cookie = "myCookie=myCookieValue";
+    document.cookie = "myCookieSameSubdomain=myCookieValueSameSubdomain;domain=rammohanraju.github.io";
+    document.cookie = "myCookieBaseDomain=myCookieValueBaseDomain;domain=github.io";
+    document.cookie = "myCookieOtherSubdomain=myCookieValueOtherSubdomain;domain=ramamohanraju.github.io";
     (function () {
         var s = document.createElement('script');
         s.src = 'https://cdn-dev.securiti.xyz/consent/cookie-consent-sdk.js';
@@ -20,5 +22,9 @@
 <body>
   Hello World sub domain <br/>
   <a href="https://ramamohanraju.github.io/" target="_blank">Sub domain: ramamohanraju</a>
+  </br>
+  <a href="https://github.com/RammohanRaju/" target="_blank">Github Ram</a>
+  </br>
+  <a href="https://github.com/ramamohanraju/" target="_blank">Github Rama</a>
 </body>
 </html>
