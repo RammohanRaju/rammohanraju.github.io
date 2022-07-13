@@ -3,20 +3,42 @@
     <link rel='stylesheet' type='text/css' href='https://cdn-dev.securiti.xyz/consent/cookie-consent.css' />
     <!-- After adding this script, call setConsentBannerParams({uuid: <unique id> }) to set unique ID for a customer. -->
     <script>
-    document.cookie = "myCookieSameSubdomain=myCookieValueSameSubdomain;domain=rammohanraju.github.io";
-    document.cookie = "myCookieBaseDomain=myCookieValueBaseDomain;domain=github.io";
-    document.cookie = "myCookieOtherSubdomain=myCookieValueOtherSubdomain;domain=ramamohanraju.github.io";
-    (function () {
-        var s = document.createElement('script');
-        s.src = 'https://cdn-dev.securiti.xyz/consent/cookie-consent-sdk.js';
-        s.setAttribute('data-tenant-uuid', '792ac81b-7715-45c8-b8c1-2c549ba457c0');
-        s.setAttribute('data-domain-uuid', '4d0b3e82-0d61-40f3-bcac-4727f7d7b5c5');
-        s.setAttribute('data-backend-url', 'https://dev.securiti.xyz');
-        s.defer = true;
-        var parent_node = document.head || document.body;
-        parent_node.appendChild(s);
-        s.addEventListener('load', function() { window.initCmp(); });
-    })()
+        function setCookie(cname, cvalue, days, domain, path, secure) {
+            var a = new Date;
+            if (days === -1) {
+                // set no action cookie with expiry time set to same day 23:59:59
+                a = new Date(a.getFullYear(), a.getMonth(), a.getDate(), 23, 59, 59);
+            } else if (days === -2) {
+                // delete a cookie
+                a = new Date(Date.UTC(1970, 1, 1, 0, 0, 0));
+            } else {
+                a.setDate(a.getDate() + days);
+            }
+//             let url = bannerConfigUtils.getParams().domain_url
+//             let isUrlHttp =  (url.indexOf('http:') == 0)
+//             secure = !isUrlHttp ? true : secure
+            var s = [cname + "=" + cvalue, "expires=" + a.toUTCString(), "path=" + (path || "/")];
+            domain && s.push("domain=" + domain),
+            secure && s.push("SameSite=None","secure"),
+            document.cookie = s.join(";")
+        }
+        setCookie('myCookieSameSubdomain', 'myCookieValueSameSubdomain', 5, 'rammohanraju.github.io', undefined, true);
+        setCookie('myCookieBaseDomain', 'myCookieValueBaseDomain', 5, 'github.io', undefined, true);
+        setCookie('myCookieOtherSubdomain', 'myCookieValueOtherSubdomain', 5, 'ramamohanraju.github.io', undefined, true);
+        //document.cookie = "myCookieSameSubdomain=myCookieValueSameSubdomain;domain=rammohanraju.github.io";
+        //document.cookie = "myCookieBaseDomain=myCookieValueBaseDomain;domain=github.io";
+        //document.cookie = "myCookieOtherSubdomain=myCookieValueOtherSubdomain;domain=ramamohanraju.github.io";
+        (function () {
+            var s = document.createElement('script');
+            s.src = 'https://cdn-dev.securiti.xyz/consent/cookie-consent-sdk.js';
+            s.setAttribute('data-tenant-uuid', '792ac81b-7715-45c8-b8c1-2c549ba457c0');
+            s.setAttribute('data-domain-uuid', '4d0b3e82-0d61-40f3-bcac-4727f7d7b5c5');
+            s.setAttribute('data-backend-url', 'https://dev.securiti.xyz');
+            s.defer = true;
+            var parent_node = document.head || document.body;
+            parent_node.appendChild(s);
+            s.addEventListener('load', function() { window.initCmp(); });
+        })()
     </script>
 </head>
 <body>
