@@ -32,18 +32,19 @@
         
     <!-- After adding this script, call setConsentBannerParams({uuid: <unique id> }) to set unique ID for a customer. -->
 
-        (function () {
-            var s = document.createElement('script');
-            s.src = 'https://cdn-dev.securiti.xyz/consent/cookie-consent-sdk.js';
-            s.setAttribute('data-tenant-uuid', '792ac81b-7715-45c8-b8c1-2c549ba457c0');
-            s.setAttribute('data-domain-uuid', 'bca6532b-4258-404a-9c10-c3a6bb539875');
-            s.setAttribute('data-backend-url', 'https://dev.securiti.xyz');
-            s.defer = true;
-            var parent_node = document.head || document.body;
-            parent_node.appendChild(s);
-            s.addEventListener('load', function() { window.initCmp(); });
-        })()
-    </script>
+
+(function () {
+	var s = document.createElement('script');
+	s.src = 'https://cdn-qa.securiti.xyz/consent/cookie-consent-sdk.js';
+	s.setAttribute('data-tenant-uuid', 'f75257cd-2139-4d4c-9a68-79659dc2f02a');
+	s.setAttribute('data-domain-uuid', '9bf3b338-e2dd-4ab6-b8ae-c383661a7793');
+	s.setAttribute('data-backend-url', 'https://qa.securiti.xyz');
+	s.defer = true;
+	var parent_node = document.head || document.body;
+	parent_node.appendChild(s);
+	s.addEventListener('load', function() { window.initCmp(); });
+})()
+</script>
 
     <!-- You may style the button by overriding class "cmp-revoke-consent" -->
     <button class="cmp-revoke-consent">Revoke Consent</button>
