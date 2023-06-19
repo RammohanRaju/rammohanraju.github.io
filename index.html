@@ -100,8 +100,7 @@
     <h1>Communication preferences(DEV)</h1>
     <br> The below form is integrated with consent<br>
     <form name="consent-form-name" id="consent-form-id">
-	  <label for="emailid">EmailId</label><br>
-          <input type="text" id="emailid" name="emailid" value="EmailId"><br>
+	  <label for="emailid">EmailId </label> <input type="text" id="emailid" name="emailid" value="EmailId"><br>
 	  <input type="checkbox" id="email" name="email" value="Email">
 	  <label for="email"> Email</label><br>
 	  <input type="checkbox" id="Phone" name="phone" value="Phone">
@@ -111,5 +110,19 @@
 	  <input type="submit" value="Submit">
     </form>
 
+
+    <script src='https://cdn-dev.securiti.xyz/consent/form-consent-sdk.js'></script>
+    <script>
+    window.addEventListener('load',
+	FormConsentSDK.initialize({
+	    codeGenMetadata:{"formPropertyId":"3","formSelector":"[name*=\"consent-form-name\"]","subjectIdentifiers":[{"name":"EmailId","selector":"[name = \"emailid\"]","isPrimary":true}],"consentIdentifiers":[{"type":"checkbox","name":"email","selector":"[name = \"email\"]","propertyId":61728,"consentValue":"checked"},{"type":"checkbox","name":"phone","selector":"[name = \"phone\"]","propertyId":61729,"consentValue":"unchecked"},{"type":"checkbox","name":"sms","selector":"[name = \"sms\"]","propertyId":61730,"consentValue":"unchecked"}],"consentTrigger":{"action":"click","selector":"[type=\"submit\"]"}},
+	    url: 'https://dev.securiti.xyz/privaci/v1/',
+	    authToken:'c90b45d0-35d4-48df-be10-a99bacf14b9f',
+	    orgId:'1',
+	    onConsentSuccess: null,
+	    onConsentFailure: null
+	})
+    )</script>
+                    
 </body>
 </html>
