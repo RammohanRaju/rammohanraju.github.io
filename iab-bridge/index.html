@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>iab bridge</title>
+</head>
+
+<body onload="init()">
+    <script>
+        var TCF_V2_COOKIE_NAME = "euconsent-v2";
+
+        function getParameterByName(e, o) {
+            o = o.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+            var t = new RegExp("[\\?&]" + o + "=([^&#]*)").exec(e);
+            return null === t ? null : decodeURIComponent(t[1].replace(/\+/g, " "))
+        }
+
+        function setCMPCookie(e, o) {
+            var t = new Date;
+            t.setTime(t.getTime() + 33696e6);
+            var a = e + "=" + o + " ; expires=" + t.toUTCString() + " ;samesite=none";
+            a += "; domain=." + window.location.host +" ; path=/;secure";
+            document.cookie = a
+        }
+
+        function getCMPCookie(e) {
+            var o = ("; " + document.cookie).split("; " + e + "=");
+            return 2 === o.length ? o.pop().split(" ;").shift() : null
+        }
+
+        function init() {
+            var parentWindow = window.parent,
+                loc = decodeURIComponent(document.location),
+                method = getParameterByName(loc, "meth"),
+                origin = getParameterByName(loc, "origin");
+
+            if ('"getTcfv2"' === method) {
+                parentWindow.postMessage(JSON.stringify({
+                    action: "tcfv2CookieFetched",
+                    value: getCMPCookie(TCF_V2_COOKIE_NAME)
+                }), origin);
+            } else if ('"setTcfv2"' === method) {
+                setCMPCookie(TCF_V2_COOKIE_NAME, getParameterByName(loc, "value").replace(/["]+/g, ""));
+                parentWindow.postMessage(JSON.stringify({
+                    action: "tcfv2CookieSet"
+                }), origin);
+            }
+        }
+    </script>
+</body>
+
+</html>
