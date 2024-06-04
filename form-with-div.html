@@ -1,0 +1,47 @@
+<html>
+<head>
+
+    <!-- After adding this script, call setConsentBannerParams({uuid: <unique id> }) to set unique ID for a customer. -->
+	
+    <script>
+        function setCookie(cname, cvalue, days, domain, path, secure) {
+            var a = new Date;
+            if (days === -1) {
+                // set no action cookie with expiry time set to same day 23:59:59
+                a = new Date(a.getFullYear(), a.getMonth(), a.getDate(), 23, 59, 59);
+            } else if (days === -2) {
+                // delete a cookie
+                a = new Date(Date.UTC(1970, 1, 1, 0, 0, 0));
+            } else {
+                a.setDate(a.getDate() + days);
+            }
+            var s = [cname + "=" + cvalue, "expires=" + a.toUTCString(), "path=" + (path || "/")];
+            domain && s.push("domain=" + domain),
+            secure && s.push("SameSite=None","secure"),
+            document.cookie = s.join(";")
+        }
+        setCookie('myForm1', 'Example form 1', 5, 'rammohanraju.github.io', undefined, true);
+        </script>
+</head>
+<body>
+    Hello World sub domain(DEV cookie consent) <br/>
+
+
+    <h1>Communication preferences(DEV) Form tab with id assigned(consent-form-id) </h1>
+    <br> The below form is integrated with consent<br>
+    <form name="consent-form-name" id="consent-form-id">
+	  <label for="emailid">EmailId </label> <input type="text" id="emailid" name="emailid" value="EmailId"><br>
+	  <input type="checkbox" id="email" name="email" value="Email">
+	  <label for="email"> Email</label><br>
+	  <input type="checkbox" id="Phone" name="phone" value="Phone">
+	  <label for="phone"> Phone</label><br>
+	  <input type="checkbox" id="sms" name="sms" value="SMS">
+	  <label for="sms"> SMS</label><br><br>
+	  <input type="submit" value="Submit">
+    </form>
+
+
+
+                    
+</body>
+</html>
