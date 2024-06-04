@@ -15,9 +15,6 @@
             } else {
                 a.setDate(a.getDate() + days);
             }
-//             let url = bannerConfigUtils.getParams().domain_url
-//             let isUrlHttp =  (url.indexOf('http:') == 0)
-//             secure = !isUrlHttp ? true : secure
             var s = [cname + "=" + cvalue, "expires=" + a.toUTCString(), "path=" + (path || "/")];
             domain && s.push("domain=" + domain),
             secure && s.push("SameSite=None","secure"),
@@ -25,33 +22,10 @@
         }
         setCookie('myForm1', 'Example form 1', 5, 'rammohanraju.github.io', undefined, true);
         </script>
-
-<!-- 
-    <link rel='stylesheet' type='text/css' href='https://cdn-dev.securiti.xyz/consent/cookie-consent.css' />
-	<script type="text/javascript" src="https://cdn-dev.securiti.xyz/consent/sdk-stub.js" defer></script> -->
-	<!-- After adding this script, call setConsentBannerParams({uuid: <unique id> }) to set unique ID for a customer. -->
-<!-- 	<script>
-	(function () {
-		var s = document.createElement('script');
-		s.src = 'https://cdn-dev.securiti.xyz/consent/cookie-consent-sdk.js';
-		s.setAttribute('data-tenant-uuid', 'a671e20a-47ca-441b-a23c-33430ad1aa10');
-		s.setAttribute('data-domain-uuid', '22b70971-9513-419e-8c04-fc9c3ae62a05');
-		s.setAttribute('data-backend-url', 'https://dev.securiti.xyz');
-		s.defer = true;
-		var parent_node = document.head || document.body;
-		parent_node.appendChild(s);
-		s.addEventListener('load', function() { window.initCmp(); });
-	})()
-	</script> -->
-    <!-- You may style the button by overriding class "cmp-revoke-consent" -->
-<!--     <button class="cmp-revoke-consent">Revoke Consent</button> -->
 </head>
 <body>
     Hello World sub domain(DEV cookie consent) <br/>
-<!--     <a href="https://ramamohanraju.github.io/" target="_blank">Sub domain: ramamohanraju</a>
-    </br>
-    <a href="https://rammohanraju2.github.io/" target="_blank">Sub domain: with etc redirect</a>
-    </br> -->
+
 
     <h1>Communication preferences(DEV) Form tab with id assigned(consent-form-id) </h1>
     <br> The below form is integrated with consent<br>
